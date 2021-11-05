@@ -11,10 +11,6 @@ const login = (user) => {
   buttonOut.style.display = 'flex';
   userName.style.display = 'flex';
   userName.textContent = user.login;
-  if (user.login.trim() == '') {
-    alert('Вы не ввели логин! Это поле обязательно для заполнения!');
-    return;
-  }
   closeModal();
 };
 
@@ -50,6 +46,10 @@ loginForm.addEventListener('submit', (event) => {
     login: inputLogin.value,
     password: inputPassword.value,
   };
+  if (user.login.trim() == '') {
+    alert('Вы не ввели логин! \nЭто поле обязательно для заполнения!');
+    return;
+  }
   localStorage.setItem('user', JSON.stringify(user));
   login(user);
 });
