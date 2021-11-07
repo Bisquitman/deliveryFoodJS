@@ -1,4 +1,3 @@
-import {showModalAuth} from './auth'
 const cardsRestaurants = document.querySelector('.cards-restaurants');
 
 const renderItems = (data) => {
