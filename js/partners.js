@@ -1,3 +1,4 @@
+import {showModalAuth} from './auth'
 const cardsRestaurants = document.querySelector('.cards-restaurants');
 
 const renderItems = (data) => {
@@ -25,11 +26,11 @@ const renderItems = (data) => {
     `;
     a.addEventListener('click', (event) => {
       event.preventDefault();
-      if (!localStorage.getItem('user')) {
-        modalAuth.style.display = 'flex';
-      } else {
+      if (localStorage.getItem('user')) {
         localStorage.setItem('restaurant', JSON.stringify(item));
         window.location.href = 'restaurant.html';
+      } else {
+       showModalAuth();
       }
     });
     cardsRestaurants.append(a);
