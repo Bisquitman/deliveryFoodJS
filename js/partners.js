@@ -30,7 +30,7 @@ const renderItems = (data) => {
         localStorage.setItem('restaurant', JSON.stringify(item));
         window.location.href = 'restaurant.html';
       } else {
-       showModalAuth();
+       modalAuth.style.display = 'flex';
       }
     });
     cardsRestaurants.append(a);
