@@ -25,8 +25,12 @@ const renderItems = (data) => {
     `;
     a.addEventListener('click', (event) => {
       event.preventDefault();
-      localStorage.setItem('restaurant', JSON.stringify(item));
-      window.location.href = 'restaurant.html';
+      if (!localStorage.getItem('user')) {
+        modalAuth.style.display = 'flex';
+      } else {
+        localStorage.setItem('restaurant', JSON.stringify(item));
+        window.location.href = 'restaurant.html';
+      }
     });
     cardsRestaurants.append(a);
   });
