@@ -46,7 +46,7 @@ const renderItems = (data) => {
 if (localStorage.getItem('restaurant')) {
   const restaurant = JSON.parse(localStorage.getItem('restaurant'));
   changeTitle(restaurant);
-  fetch(`../db/${restaurant.products}`)
+  fetch(`https://delivery-food-glo-default-rtdb.firebaseio.com/db/${restaurant.products}`)
     .then((response) => response.json())
     .then((data) => {
       renderItems(data);
