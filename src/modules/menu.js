@@ -1,6 +1,7 @@
 const menu = () => {
   const cardsMenu = document.querySelector('.cards-menu');
   const sectionHeading = document.querySelector('.section-heading');
+  const cartArray = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 
   const changeTitle = (restaurant) => {
     const restaurantTitle = document.querySelector('.restaurant-title');
@@ -15,6 +16,21 @@ const menu = () => {
     <div class="category">${restaurant.kitchen}</div>
   `;
     sectionHeading.append(cardInfo);
+  };
+
+  const addToCart = (cartItem) => {
+    const cartArray = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+    if (cartArray.some((item) => item.id === cartItem.id)) {
+      cartArray.map((item) => {
+        if (item.id === cartItem.id) {
+          item.count = item.count + 1;
+        }
+        return item;
+      });
+    } else {
+      cartArray.push(cartItem);
+    };
+    localStorage.setItem('cart', JSON.stringify(cartArray));
   };
 
   const renderItems = (data) => {
@@ -40,6 +56,15 @@ const menu = () => {
         </div>
       </div>
     `;
+      card.querySelector('.button-card-text').addEventListener('click', () => {
+        const cartItem = {
+          name: name,
+          price: price,
+          id: id,
+          count: 1,
+        };
+        addToCart(cartItem);
+      });
       cardsMenu.append(card);
     });
   }

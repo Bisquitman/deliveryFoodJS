@@ -6,11 +6,13 @@ const auth = () => {
   const inputPassword = document.getElementById('password');
   const buttonOut = document.querySelector('.button-out');
   const userName = document.querySelector('.user-name');
+  const buttonCart = document.querySelector('.button-cart');
 
   const login = (user) => {
     buttonAuth.style.display = 'none';
     buttonOut.style.display = 'flex';
     userName.style.display = 'flex';
+    buttonCart.style.display = 'flex';
     userName.textContent = user.login;
     closeModal();
   };
@@ -20,6 +22,7 @@ const auth = () => {
     buttonOut.style.display = 'none';
     userName.style.display = 'none';
     userName.textContent = '';
+    buttonCart.style.display = 'none';
     localStorage.removeItem('user');
   };
 
