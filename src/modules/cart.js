@@ -17,6 +17,7 @@ const cart = () => {
     modalBody.innerHTML = '';
     localStorage.removeItem('cart');
     modalCart.classList.remove('is-open');
+    modalCart.querySelector('.modal-pricetag').textContent = '0 ₽';
   }
 
   const minusCount = (id) => {
