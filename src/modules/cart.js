@@ -5,6 +5,14 @@ const cart = () => {
   const buttonSend = modalCart.querySelector('.button-primary');
   const buttonClearCart = modalCart.querySelector('.clear-cart');
 
+  const totalPrice = (data) => {
+    const price = modalCart.querySelector('.modal-pricetag');
+    price.textContent = `${[...data].reduce(
+      (accumulator, currentValue) => accumulator + (currentValue.price * currentValue.count),
+      0
+    )} ₽`;
+  };
+
   const resetCart = () => {
     modalBody.innerHTML = '';
     localStorage.removeItem('cart');
@@ -51,6 +59,7 @@ const cart = () => {
       `;
       modalBody.append(cartRow);
     });
+    totalPrice(data);
   }
 
   modalBody.addEventListener('click', (event) => {
