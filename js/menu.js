@@ -1,7 +1,6 @@
 const menu = () => {
   const cardsMenu = document.querySelector('.cards-menu');
   const sectionHeading = document.querySelector('.section-heading');
-  const cartArray = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 
   const changeTitle = (restaurant) => {
     const restaurantTitle = document.querySelector('.restaurant-title');
